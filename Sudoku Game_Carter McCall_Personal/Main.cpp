@@ -11,8 +11,6 @@
 int main() {
 	Board bd;
 	int input;
-	cout << ANSI_COLOR_WHITE << "Welcome to sudoku! Would you like a: 2.) 6x6 board, 3.) 9x9 board ";
-	cin >> input;
-	//bd.initializer();
+	cout << ANSI_COLOR_WHITE << "Welcome to sudoku! You will be playing on a 9x9 board, Good Luck!\n\n";
 	bd.printBoard();
 }

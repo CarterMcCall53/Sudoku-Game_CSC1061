@@ -13,30 +13,17 @@ void Board::printBoard() {
 	for (int i = 0; i < 9; i++)	cout << ANSI_COLOR_RED << vertical << spacer;
 	cout << vertical << endl;
 
-	for (int h = 0; h < 3; h++) {
-		for (int g = 0; g < ; g++) {
-			cout << vertical;
-			for (int i = 0; i < 9; i++) {
-				for (int j = 0; j < 3; j++) {
-					cout << ANSI_COLOR_WHITE << nineByNine[i + h][j + g];
-					if (j != 2) cout << ' ';
-				}
-				cout << ANSI_COLOR_RED << vertical;
-			}
-			cout << endl;
+	for (int i = 0; i < 9; i++) {
+		cout << vertical;
+		for (int j = 0; j < 9; j++) {
+			cout << ANSI_COLOR_WHITE << nineByNine[i][j];
+			if (j != 2 && j != 5 && j != 8) cout << ' ';
+			else cout << ANSI_COLOR_RED << vertical;
 		}
-		for (int i = 0; i < 9; i++)	cout << ANSI_COLOR_RED << vertical << spacer;
-		cout << vertical << endl;
+		cout << endl;
+		if (i == 2 || i == 5 || i == 8) {
+			for (int i = 0; i < 9; i++)	cout << ANSI_COLOR_RED << vertical << spacer;
+			cout << vertical << endl;
+		}
 	}
 }
-
-//void Board::initializer() {
-//	srand(time(0));
-//
-//	for (int i = 0; i < 9; i++) {
-//		for (int j = 0; j < 9; j++) {
-//			nineByNine[j][i] = rand() % 9;
-//			//cout << threeByThree[j][i];
-//		}
-//	}
-//}
