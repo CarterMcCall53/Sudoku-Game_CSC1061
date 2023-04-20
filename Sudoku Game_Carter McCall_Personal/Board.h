@@ -12,9 +12,17 @@ using namespace std;
 class Board {
 private:
 	string spacer = "-", vertical = "|";
-	int threeByThree[3][3], sixBySix[6][6], nineByNine[9][9];
+	int nineByNine[9][9] = { {1, 2, 3, 4, 5, 6, 7, 8, 9 },
+		{2, 3, 4, 5, 6, 7, 8, 9, 1},
+		{3, 4, 5, 6, 7, 8, 9, 1, 2},
+		{4, 5, 6, 7, 8, 9, 1, 2, 3},
+		{5, 6, 7, 8, 9, 1, 2, 3, 4},
+		{6, 7, 8, 9, 1, 2, 3, 4, 5},
+		{7, 8, 9, 1, 2, 3, 4, 5, 6},
+		{8, 9, 1, 2, 3, 4, 5, 6, 7},
+		{9, 1, 2, 3, 4, 5, 6, 7, 8} };
 
 public:
-	void printThreeByThree(int multiplier);
+	void printBoard();
 	void initializer();
 };

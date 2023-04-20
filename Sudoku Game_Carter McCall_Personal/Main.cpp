@@ -6,13 +6,13 @@
 */
 
 #include "Board.h"
+#include "Colors.h"
 
 int main() {
 	Board bd;
 	int input;
-	cout << "Welcome to sudoku! Would you like a: 2.) 6x6 board, 3.) 9x9 board ";
+	cout << ANSI_COLOR_WHITE << "Welcome to sudoku! Would you like a: 2.) 6x6 board, 3.) 9x9 board ";
 	cin >> input;
-	input *= 3;
-	bd.initializer();
-	bd.printThreeByThree(input);
+	//bd.initializer();
+	bd.printBoard();
 }
