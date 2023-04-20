@@ -134,6 +134,9 @@
     <ClInclude Include="Board.h" />
     <ClInclude Include="Colors.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Downloads\Low Expectations Scrum Project (Carter, Hosea, Isaiah).xlsx" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
