@@ -13,4 +13,5 @@ int main() {
 	int input;
 	cout << ANSI_COLOR_WHITE << "Welcome to sudoku! You will be playing on a 9x9 board, Good Luck!\n\n";
 	bd.printBoard();
+	cout << ANSI_COLOR_WHITE;
 }
