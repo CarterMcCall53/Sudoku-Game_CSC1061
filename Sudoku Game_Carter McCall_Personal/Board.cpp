@@ -67,4 +67,5 @@ void Board::tempCoordinate() {
 	cin >> input;
 
 	nineByNine[rowCoordinate][columnCoordinate] = input;
+	//when isaiah gets the entire algorithm in we can add more to this (checking if the input is possible, checking input data types, etc.)
 }
