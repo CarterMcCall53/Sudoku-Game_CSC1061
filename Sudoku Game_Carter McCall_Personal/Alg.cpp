@@ -87,7 +87,12 @@ void Alg::randomBoard() {
                 squ = f + (i * 3);
                 if (square[squ].size() != 0) {
                         for (int j = 1; j < 10; j++) {
-                            
+                            for (int g = 0; g < 3; g++) {
+                                for (int h = 0; h < 3; h++) {
+                                    
+
+                                }
+                            }
                         }
                 }
                 whichC += 3;
@@ -102,16 +107,56 @@ int Alg::getNumber(int x, int y) {
 
 int Alg::getRow(int square, int num) {
     int retVal = 0;
+    int modifier = 0;
     if (0 <= square < 3) {
-
+        modifier = 0;
     }
     else if (3<= square < 6) {
+        modifier = 3;
+    }
+    else if (6 <= square < 9) {
+        modifier = 6;
+    }
 
+    if (0 <= num < 3) {
+        retVal = 0 + modifier;
+    }
+    else if (3 <= num < 6) {
+        retVal = 1 + modifier;
+    }
+    else if (6 <= num < 9) {
+        retVal = 2 + modifier;
     }
     return retVal;
 }
 int Alg::getColumn(int square, int num) {
     int retVal = 0;
+    int modifier = 0;
+    
+    return retVal;
+}
+
+int Alg::getSquare(int row, int column) {
+    int retVal = 0;
+    int cube = 0;
+    if (0<= column < 3) {
+        cube = 0;
+    }
+    else if (3 <= column < 6) {
+        cube = 1;
+    }
+    else if (6 <= column < 9) {
+        cube = 2;
+    }
+    if (0<= row < 3) {
+        retVal = cube;
+    }
+    else if (3 <= row < 6) {
+        retVal = cube + 3;
+    }
+    else if (6 <= row < 9) {
+        retVal = cube + 6;
+    }
     return retVal;
 }
 
