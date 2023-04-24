@@ -43,3 +43,28 @@ void Board::printBoard() {
 		}
 	}
 }
+
+void Board::tempCoordinate() {
+
+	string rowLetter;
+	int rowCoordinate;
+	int columnCoordinate;
+	int input;
+
+	cout << ANSI_COLOR_WHITE << "\nWhat row would you like? ";
+	cin >> rowLetter;
+	rowLetter = tolower(rowLetter[0]);
+	for (int i = 0; i < 26; i++)
+	{
+		if (rowLetter == letters[i]) rowCoordinate = i;
+	}
+
+	cout << "\nWhat column would you like? ";
+	cin >> columnCoordinate;
+	columnCoordinate -= 1;
+
+	cout << "\nWhat number would you like to input? ";
+	cin >> input;
+
+	nineByNine[rowCoordinate][columnCoordinate] = input;
+}
