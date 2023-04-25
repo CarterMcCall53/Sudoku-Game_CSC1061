@@ -3,6 +3,8 @@
 *  27 Feb. 2023
 *  Purpose:
 *		Hold the printBoard() and game() functions
+*  Progress:
+*		
 */
 
 #include "Board.h"	
@@ -67,5 +69,4 @@ void Board::tempCoordinate() {
 	cin >> input;
 
 	nineByNine[rowCoordinate][columnCoordinate] = input;
-	//when isaiah gets the entire algorithm in we can add more to this (checking if the input is possible, checking input data types, etc.)
 }
