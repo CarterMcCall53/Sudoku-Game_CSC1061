@@ -81,63 +81,10 @@ void Alg::randomBoard() {
         int squ = 0;
         int sque = 0;
         int rowp = 0;
-        int columnp = 0;
-        bool add = false;
-        bool addRow = false;
-        bool addColumn = false;
-        for (int i = 0; i < 3; i++) {
-            for (int f = 0; f < 3; f++) {
-                squ = f + (i * 3);
-                if (square[squ].size() != 0) {
-                        for (int j = 1; j < 10; j++) {
-                            for (int g = 0; g < 3; g++) {
-                                for (int r = 0; r < row[g + (i * 3)].size(); r++) {
-                                    if (row[g + (i * 3)][r] == j) {
-                                        addRow = true;
-                                        rowNum = r;
-                                    }
-                                }
-                                for (int h = 0; h < 3; h++) {
-                                    
-                                    for (int n = 0; n < column[h + (f * 3)].size(); n++) {
-                                        if (column[h + (f * 3)][n] == j) {
-                                            columnNum == n;
-                                            addColumn = true;
-                                        }
-                                    }
-                                    if (addRow && addColumn) {
+        
+        
 
-                                        break;
 
-                                    }
-
-                                }
-                                if (addRow && addColumn) {
-                                    break;
-                                }
-
-                            }
-                            if (addRow && addColumn) {
-                                for (int g = 0; g < square[squ].size(); g++) {
-                                    if (square[squ][g] == j) {
-                                        sque = g;
-                                        add = true;
-                                    }
-                                }
-                            }
-                            if (add) {
-                                board[columnNum][rowNum] = row[columnNum][rowNum];
-                                row[columnNum].erase(row[columnNum].begin() + rowNum);
-                                column[rowNum].erase(column[rowNum].begin() + columnNum);
-                                square[squ].erase(square[cube + which].begin() + sque);
-                            }
-
-                        }
-                }
-                whichC += 3;
-            }
-            which += 3;
-        }
 }
 
 int Alg::getNumber(int x, int y) {
@@ -240,6 +187,7 @@ int Alg::check(int board[9][9]) {
     }
     return retVal;
 }
+
 /*for (int i = 0; i < 9;i++) {
     for (int j = 0; j < 9;j++) {
         size = row[i].size();
@@ -296,3 +244,63 @@ int Alg::check(int board[9][9]) {
                                     }
                                 }
                             }*/
+/*int squ = 0;
+int sque = 0;
+int rowp = 0;
+int columnp = 0;
+bool add = false;
+bool addRow = false;
+bool addColumn = false;
+for (int i = 0; i < 3; i++) {
+    for (int f = 0; f < 3; f++) {
+        squ = f + (i * 3);
+        if (square[squ].size() != 0) {
+            for (int j = 1; j < 10; j++) {
+                for (int g = 0; g < 3; g++) {
+                    for (int r = 0; r < row[g + (i * 3)].size(); r++) {
+                        if (row[g + (i * 3)][r] == j) {
+                            addRow = true;
+                            rowNum = r;
+                        }
+                    }
+                    for (int h = 0; h < 3; h++) {
+
+                        for (int n = 0; n < column[h + (f * 3)].size(); n++) {
+                            if (column[h + (f * 3)][n] == j) {
+                                columnNum == n;
+                                addColumn = true;
+                            }
+                        }
+                        if (addRow && addColumn) {
+
+                            break;
+
+                        }
+
+                    }
+                    if (addRow && addColumn) {
+                        break;
+                    }
+
+                }
+                if (addRow && addColumn) {
+                    for (int g = 0; g < square[squ].size(); g++) {
+                        if (square[squ][g] == j) {
+                            sque = g;
+                            add = true;
+                        }
+                    }
+                }
+                if (add) {
+                    board[columnNum][rowNum] = row[columnNum][rowNum];
+                    row[columnNum].erase(row[columnNum].begin() + rowNum);
+                    column[rowNum].erase(column[rowNum].begin() + columnNum);
+                    square[squ].erase(square[cube + which].begin() + sque);
+                }
+
+            }
+        }
+        whichC += 3;
+    }
+    which += 3;
+}*/

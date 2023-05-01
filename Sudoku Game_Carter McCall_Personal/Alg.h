@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <algorithm> 
+#include <cmath>
 
 class Alg {
 private:
@@ -24,6 +25,7 @@ private:
 		int row = 0;
 		int column = 0;
 	};
+
 public:
 	int getNumber(int, int);
 	void basicVectors();
