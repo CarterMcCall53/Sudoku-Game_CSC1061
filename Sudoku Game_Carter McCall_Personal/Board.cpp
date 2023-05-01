@@ -1,12 +1,28 @@
-/* Carter McCall
+/* Carter McCall & Hosea Masih
 *  Board.cpp
 *  27 Feb. 2023
 *  Purpose:
 *		Hold the printBoard() and game() functions
+*  Progress:
+*		Modified: March 20, 2023
+*			 Updated the board to add a grid and 2d array to print
+*		Modified: March 24, 2023 
+*			 Added the coordinate system, using a 1d array
+*	    Modified: March 25, 2023
+*			Added more organization and reformated the .cpp file
+*		
 */
 
+// included libraries for Board.cpp
 #include "Board.h"	
 #include "Colors.h"
+
+/*
+  Prints the board using for loops and the 2d
+  array with numbers. Empty space and a special
+  chars are used to make the board more organized
+  and less cluttered.
+*/
 
 void Board::printBoard() {
 
@@ -44,12 +60,16 @@ void Board::printBoard() {
 	}
 }
 
+  /*
+  Code to access the board in specific coordinates
+  and change the number at that specific coordinate
+  Using a 1d array of letters to access the 2d array,
+  for the x-coordinate and a int variable to access 
+  the y-coordinate
+  */
+
 void Board::tempCoordinate() {
 
-	string rowLetter;
-	int rowCoordinate;
-	int columnCoordinate;
-	int input;
 
 	cout << ANSI_COLOR_WHITE << "\nWhat row would you like? ";
 	cin >> rowLetter;
@@ -67,5 +87,4 @@ void Board::tempCoordinate() {
 	cin >> input;
 
 	nineByNine[rowCoordinate][columnCoordinate] = input;
-	//when isaiah gets the entire algorithm in we can add more to this (checking if the input is possible, checking input data types, etc.)
 }
