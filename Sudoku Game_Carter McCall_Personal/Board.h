@@ -28,7 +28,7 @@ private:				// stored variables & 2d array for board + special chars
 
 	char spacer = '-', vertical = '|', letter;
 
-	// 2d array
+	// printBoard() test array
 	int nineByNine[9][9] = { {1, 2, 3, 4, 5, 6, 7, 8, 9},
 							 {2, 3, 4, 5, 6, 7, 8, 9, 1},
 							 {3, 4, 5, 6, 7, 8, 9, 1, 2},
@@ -39,7 +39,7 @@ private:				// stored variables & 2d array for board + special chars
 							 {8, 9, 1, 2, 3, 4, 5, 6, 7},
 							 {9, 1, 2, 3, 4, 5, 6, 7, 8} };
 
-	// variables for printBoard()
+	// test coordinate system
 	string letters[26] = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
 					      "r", "s", "t", "u", "v", "w", "x", "y", "z"};
 	string rowLetter;
@@ -52,6 +52,7 @@ private:				// stored variables & 2d array for board + special chars
 public:					 // houses functions for Board.cpp
 	void printBoard();
 	void tempCoordinate();
+	int getNumber(int y, int x);
 };
 
 

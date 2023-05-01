@@ -88,3 +88,7 @@ void Board::tempCoordinate() {
 
 	nineByNine[rowCoordinate][columnCoordinate] = input;
 }
+
+int Board::getNumber(int y, int x) {
+	return nineByNine[y][x];
+}
