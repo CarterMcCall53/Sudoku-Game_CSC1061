@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <algorithm> 
 
 class Alg {
 private:
@@ -30,5 +31,6 @@ public:
 	int getRow(int,int);
 	int getColumn(int, int);
 	int getSquare(int, int);
+	int check(int[9][9]);
 };
 
