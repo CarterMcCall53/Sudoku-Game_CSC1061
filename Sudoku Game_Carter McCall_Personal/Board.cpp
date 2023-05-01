@@ -15,6 +15,7 @@
 
 // included libraries for Board.cpp
 #include "Board.h"	
+#include "Alg.h"
 #include "Colors.h"
 
 /*
@@ -87,6 +88,32 @@ void Board::tempCoordinate() {
 	cin >> input;
 
 	nineByNine[rowCoordinate][columnCoordinate] = input;
+}
+
+void Board::gameplayLoop() {
+	Board bd;
+	Alg alg;
+	string input;
+	char repChar;
+	bool loop = false;
+	do
+	{
+		do
+		{
+			bd.printBoard();
+			bd.tempCoordinate();
+			if (alg.check(nineByNine) == 2) loop = true;
+			else loop = false;
+			system("cls");
+		} while (loop == false);
+		if (alg.check(nineByNine) == 1) cout << "INCORRECT! Would you like to try again? (Y|N): ";
+		else cout << "CORRECT! Would you like to play again? (Y|N): ";
+		do
+		{
+			cout << input;
+			repChar = tolower(input[0]);
+		} while (repChar != 'y' && repChar != 'n');
+	} while (repChar == 'y');
 }
 
 int Board::getNumber(int y, int x) {
