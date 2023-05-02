@@ -158,7 +158,7 @@ int Alg::check(Board bd) {
     int retVal = 0;
     for (int i = 0; i < 9; i++) {
         for (int f = 0; f < 9; f++) {
-            if (board[i][f] == 0) {
+            if (bd.getNumber(i, f) == 0) {
                 retVal = 2;
                 return retVal;
             }
