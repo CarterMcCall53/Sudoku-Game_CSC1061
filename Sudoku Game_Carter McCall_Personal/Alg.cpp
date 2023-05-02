@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void Alg::basicVectors() {
+/*void Alg::basicVectors() {
     for (int i = 0; i < 9; i++) {
         for (int j = 1; j < 10; j++) {
             row[i].push_back(j);
@@ -47,7 +47,7 @@ void Alg::randomBoard() {
                             if (square[cube+which][i] == row[j+which][randNum]) {
                                 squareTrue = true;
                                 squareNum = i;
-                                i = square[cube].size();
+                                break;
                             }
                             i++;
                             
@@ -56,7 +56,7 @@ void Alg::randomBoard() {
                             if (column[f+which][i] == row[j + which][randNum]) {
                                 columnTrue = true;
                                 columnNum = i;
-                                i = column[f+which].size();
+                                break;
                             }
                             i++;
 
@@ -78,13 +78,62 @@ void Alg::randomBoard() {
         int rowNum = 0;
         columnNum = 0;
         int squ = 0;
-        int sque = 0;
-        int rowp = 0;
-        
+        int value = 0;
+        bool addcolumn =  false, addsquare = false, add = false;
+        for (int i = 0; i < 9; i++) {
+            for (int f = 0; f < 9; f++) {
+                if (board[i][f] != 0) {
+                    continue;
+                }
+                for (int t = 0; t < row[i].size(); t++) {
+                    value = row[i][t];
+                    for (int g = 0; g < column[f].size(); g++) {
+                        if (g == column[f].size() - 1 && column[f][g] != value) {
+                            addsquare = false;
+                            break;
+                        }
+                        if (column[f][g] == value) {
+                            addcolumn = true;
+                            columnNum = g;
+                            break;
+                        }
+                    }
+                    squ = getSquare(i, f);
+                    for (int g = 0; g < square[squ].size(); g++) {
+                        if (g == square[squ].size() - 1 && square[squ][g] != value) {
+                            addsquare = false;
+                            break;
+                        }
+                        if (square[squ][g] == value) {
+                            addsquare = true;
+                            squareNum = g;
+                            break;
+                        }
+                    }
+                    if (addcolumn && addsquare) {
+                        
+                        if (t < row[i].size() && columnNum < column[f].size()&& squareNum < square[squ].size()) {
+                            row[i].erase(row[i].begin() + t);
+                            column[f].erase(column[f].begin() + columnNum);
+                            square[squ].erase(square[squ].begin() + squareNum);
+                        }
+                        else {
+                            continue;
+                        }
+                       
+                        board[i][f] = value;
+                        break;
+                     
+                    }
+                    
+                }
+                
+            }
+        }
         
 
 
-}
+}*/
 
 int Alg::getNumber(int x, int y) {
     return(board[x][y]);

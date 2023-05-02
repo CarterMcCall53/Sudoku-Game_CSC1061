@@ -30,7 +30,7 @@ private:
 public:
 	int getNumber(int, int);
 	void basicVectors();
-	void randomBoard();
+	//void randomBoard();
 	int getRow(int,int);
 	int getColumn(int, int);
 	int getSquare(int, int);
