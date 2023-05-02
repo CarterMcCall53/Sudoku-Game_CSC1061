@@ -48,7 +48,8 @@ void Board::printBoard() {
 
 		cout << ANSI_COLOR_BLACK << letter << ANSI_COLOR_RED << vertical;
 		for (int j = 0; j < 9; j++) {
-			cout << ANSI_COLOR_WHITE << nineByNine[i][j];
+			if (nineByNine[j][i] == 0) cout << ' ';
+			else cout << ANSI_COLOR_WHITE << nineByNine[i][j];
 			if (j != 2 && j != 5 && j != 8) cout << ' ';
 			else cout << ANSI_COLOR_RED << vertical;
 		}
@@ -69,7 +70,7 @@ void Board::printBoard() {
   the y-coordinate
   */
 
-void Board::tempCoordinate() {
+void Board::coordinate() {
 
 
 	cout << ANSI_COLOR_WHITE << "\nWhat row would you like? ";
@@ -101,7 +102,7 @@ void Board::gameplayLoop() {
 		do
 		{
 			bd.printBoard();
-			bd.tempCoordinate();
+			bd.coordinate();
 			if (alg.check(nineByNine) == 2) loop = true;
 			else loop = false;
 			if (loop == false) system("cls");
