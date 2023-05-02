@@ -7,6 +7,7 @@
 #include <algorithm> 
 #include <cmath>
 
+#include "Board.h"
 class Alg {
 private:
 	std::vector<int> row[9];
@@ -33,6 +34,6 @@ public:
 	int getRow(int,int);
 	int getColumn(int, int);
 	int getSquare(int, int);
-	int check(int[9][9]);
+	int check(Board);
 };
 
