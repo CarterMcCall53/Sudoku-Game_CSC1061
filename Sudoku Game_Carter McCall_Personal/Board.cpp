@@ -104,13 +104,13 @@ void Board::gameplayLoop() {
 			bd.tempCoordinate();
 			if (alg.check(nineByNine) == 2) loop = true;
 			else loop = false;
-			system("cls");
-		} while (loop == false);
+			if (loop == false) system("cls");
+		} while (loop);
 		if (alg.check(nineByNine) == 1) cout << "INCORRECT! Would you like to try again? (Y|N): ";
 		else cout << "CORRECT! Would you like to play again? (Y|N): ";
 		do
 		{
-			cout << input;
+			cin >> input;
 			repChar = tolower(input[0]);
 		} while (repChar != 'y' && repChar != 'n');
 	} while (repChar == 'y');

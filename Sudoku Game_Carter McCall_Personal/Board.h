@@ -36,10 +36,6 @@ private:				// stored variables & 2d array for board + special chars
 	int columnCoordinate;
 	int input;
 
-
-	
-public:					 // houses functions for Board.cpp
-
 	// printBoard() test array
 	int nineByNine[9][9] = { {1, 2, 3, 4, 5, 6, 7, 8, 9},
 							 {2, 3, 4, 5, 6, 7, 8, 9, 1},
@@ -49,7 +45,10 @@ public:					 // houses functions for Board.cpp
 							 {6, 7, 8, 9, 1, 2, 3, 4, 5},
 							 {7, 8, 9, 1, 2, 3, 4, 5, 6},
 							 {8, 9, 1, 2, 3, 4, 5, 6, 7},
-							 {9, 1, 2, 3, 4, 5, 6, 7, 0} };
+							 {9, 1, 2, 3, 4, 5, 6, 7, 8} };
+
+	
+public:					 // houses functions for Board.cpp
 	void printBoard();
 	void tempCoordinate();
 	int getNumber(int y, int x);
