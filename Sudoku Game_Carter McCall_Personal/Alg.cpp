@@ -146,19 +146,20 @@ int Alg::getSquare(int row, int column) {
     return retVal;
 }
 
-int Alg::check(Board bd) {
+int Alg::check(int board[9][9]) {
+    int retVal = 0;
     for (int i = 0; i < 9; i++) {
         row[i].clear();
     }
     for (int i = 0; i < 9; i++) {
         column[i].clear();
-    }for (int i = 0; i < 9; i++) {
+    }
+    for (int i = 0; i < 9; i++) {
         square[i].clear();
     }
-    int retVal = 0;
     for (int i = 0; i < 9; i++) {
         for (int f = 0; f < 9; f++) {
-            if (bd.getNumber(i, f) == 0) {
+            if (board[i][f] == 0) {
                 retVal = 2;
                 return retVal;
             }
@@ -168,9 +169,9 @@ int Alg::check(Board bd) {
         int squ = 0;
         for (int f = 0; f < 9; f++) {
             squ = getSquare(i, f);
-            row[i].push_back(bd.getNumber(i,f));
-            column[f].push_back(bd.getNumber(i, f));
-            square[squ].push_back(bd.getNumber(i, f));
+            row[i].push_back(board[i][f]);
+            column[f].push_back(board[i][f]);
+            square[squ].push_back(board[i][f]);
         }
     }
     for (int i = 0; i < 9; i++) {
