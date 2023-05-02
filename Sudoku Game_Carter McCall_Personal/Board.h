@@ -50,7 +50,7 @@ private:				// stored variables & 2d array for board + special chars
 	
 public:					 // houses functions for Board.cpp
 	void printBoard();
-	void tempCoordinate();
+	void coordinate();
 	int getNumber(int y, int x);
 	void gameplayLoop();
 };
