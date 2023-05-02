@@ -34,6 +34,6 @@ public:
 	int getRow(int,int);
 	int getColumn(int, int);
 	int getSquare(int, int);
-	int check(Board);
+	int check(int[9][9]);
 };
 
