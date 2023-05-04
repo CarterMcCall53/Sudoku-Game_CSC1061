@@ -5,16 +5,19 @@
 
 using namespace std;
 
-#define DEBUG
+#define DEBUG2
 
 void Alg::randomBoard(int diffuculty) {
+    //setting the seed of the randomization
     srand(time(0));
     int randNum = 0;
+    //using vectors here to ensure that when the numbers are being shifted thay are in the correct place 
     vector<int> baseRow;
     for (int i = 0; i < 9; i++) {
         baseRow.push_back(i+1);
     }
     for (int i = 0; i < 9; i++) {
+        //
         randNum = rand() % baseRow.size();
         rows[0].r.push_back(baseRow[randNum]);
         //cout << rows[0].r[i];
@@ -101,8 +104,6 @@ int Alg::getoutput(int x, int y) {
     return(output[x][y]);
 }
 
-
-
 int Alg::getSquare(int row, int column) {
     int retVal = 0;
     int cube = 0;
@@ -183,7 +184,7 @@ void Alg::shift(int ro, int move) {
         rows[ro].r.insert(rows[ro].r.begin(), temp);
         rows[ro].r.pop_back();
     }
-#ifdef DEBUG
+#ifdef DEBUG1
     for (int i = 0; i < rows[ro].r.size(); i++) {
         cout << rows[ro].r[i];
     }
