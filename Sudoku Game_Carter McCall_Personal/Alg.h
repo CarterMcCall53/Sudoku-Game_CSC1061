@@ -10,13 +10,21 @@
 #include "Board.h"
 class Alg {
 private:
-	vector<int> row[9];
-	vector<int> column[9];
-	vector<int> square[9];
+	
 	struct Rows {
 		vector<int> r;
 	};
 	int board[9][9] = { {0,0,0,0,0,0,0,0,0},
+						{0,0,0,0,0,0,0,0,0},
+						{0,0,0,0,0,0,0,0,0},
+						{0,0,0,0,0,0,0,0,0},
+						{0,0,0,0,0,0,0,0,0},
+						{0,0,0,0,0,0,0,0,0},
+						{0,0,0,0,0,0,0,0,0},
+						{0,0,0,0,0,0,0,0,0},
+						{0,0,0,0,0,0,0,0,0} };
+
+	int output[9][9] ={ {0,0,0,0,0,0,0,0,0},
 						{0,0,0,0,0,0,0,0,0},
 						{0,0,0,0,0,0,0,0,0},
 						{0,0,0,0,0,0,0,0,0},
@@ -33,8 +41,8 @@ private:
 	void shift(int,int);
 	void swapCol(int, int);
 public:
-	int getNumber(int, int);
-	void randomBoard();
+	int getoutput(int, int);
+	void randomBoard(int);
 	//unused
 	//int getRow(int,int);
 	//int getColumn(int, int);

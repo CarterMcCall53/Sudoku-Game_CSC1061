@@ -4,7 +4,10 @@
 #include"Alg.h"
 
 using namespace std;
-void Alg::randomBoard() {
+
+#define DEBUG
+
+void Alg::randomBoard(int diffuculty) {
     srand(time(0));
     int randNum = 0;
     vector<int> baseRow;
@@ -48,22 +51,54 @@ void Alg::randomBoard() {
             board[i][f] = rows[i].r[f];
         }
     }
+#ifdef DEBUG
     for (int i = 0; i < 9; i++) {
         for (int f = 0; f < 9; f++) {
             cout << board[i][f];
         }
         cout << endl;
     }
-    //int c = check(board);
-    //if (c == 0) {
-    //    cout << "IT WORKS" << endl;
-    //}
 
-
+    int c = check(board);
+    if (c == 0) {
+        cout << "IT WORKS" << endl;
+    }
+#endif
+    randNum = 0;
+    int x = 0;
+    int y = 0;
+    int number = 0;
+    if (diffuculty == 1) {
+        randNum = rand() % 11;
+        number = 30 + randNum;
+    }
+    if (diffuculty == 2) {
+        randNum = rand() % 11;
+        number = 20 + randNum;
+    }
+    for (int i = 0; i < 30; i++) {
+        x = rand() % 9;
+        y = rand() % 9;
+        if (output[x][y] == 0) {
+            output[x][y] = board[x][y];
+        }
+        else {
+            i--;
+            continue;
+        }
+    }
+#ifdef DEBUG
+    for (int i = 0; i < 9; i++) {
+        for (int f = 0; f < 9; f++) {
+            cout << output[i][f];
+        }
+        cout << endl;
+    }
+#endif
 }
 
-int Alg::getNumber(int x, int y) {
-    return(board[x][y]);
+int Alg::getoutput(int x, int y) {
+    return(output[x][y]);
 }
 
 
@@ -94,6 +129,9 @@ int Alg::getSquare(int row, int column) {
 }
 
 int Alg::check(int board[9][9]) {
+    vector<int> row[9];
+    vector<int> column[9];
+    vector<int> square[9];
     int retVal = 0;
     for (int i = 0; i < 9; i++) {
         row[i].clear();
@@ -145,9 +183,11 @@ void Alg::shift(int ro, int move) {
         rows[ro].r.insert(rows[ro].r.begin(), temp);
         rows[ro].r.pop_back();
     }
-    /*for (int i = 0; i < rows[ro].r.size(); i++) {
+#ifdef DEBUG
+    for (int i = 0; i < rows[ro].r.size(); i++) {
         cout << rows[ro].r[i];
-    }*/
+    }
+#endif
 }
 
 void Alg::swapCol(int col, int newcol) {
