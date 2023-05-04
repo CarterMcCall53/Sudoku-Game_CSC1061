@@ -25,50 +25,76 @@
   and less cluttered.
 */
 
-void Board::printBoard() {
-
-	cout << "  ";
-	for (int i = 0; i < 9; i++) cout << ANSI_COLOR_BLACK << i + 1 << ' ';		
-
-	cout << "\n ";
-	for (int i = 0; i < 9; i++)	cout << ANSI_COLOR_RED << vertical << spacer;
-	cout << vertical << endl;
-
-	for (int i = 0; i < 9; i++) {
-
-		if (i == 0) letter = 'A';
-		else if (i == 1) letter = 'B';
-		else if (i == 2) letter = 'C';
-		else if (i == 3) letter = 'D';
-		else if (i == 4) letter = 'E';
-		else if (i == 5) letter = 'F';
-		else if (i == 6) letter = 'G';
-		else if (i == 7) letter = 'H';
-		else if (i == 8) letter = 'I';
-
-		cout << ANSI_COLOR_BLACK << letter << ANSI_COLOR_RED << vertical;
-		for (int j = 0; j < 9; j++) {
-			if (nineByNine[j][i] == 0) cout << ' ';
-			else cout << ANSI_COLOR_WHITE << nineByNine[i][j];
-			if (j != 2 && j != 5 && j != 8) cout << ' ';
-			else cout << ANSI_COLOR_RED << vertical;
+void Board::gameplayLoop() {
+	Board bd;
+	Alg alg;
+	string input;
+	int numInput, randNum;
+	char repChar;
+	bool loop = false;
+	srand(time(0));
+	randNum = rand() % 100;
+	
+	do
+	{
+		cout << "Would you like a predefined board (1), or a random board (2)? ";
+		cin >> numInput;
+		if (numInput == 1)
+		{
+			numInput == NULL;
+			cout << "Would you like an easy board (1), or hard board (2)? ";
+			cin >> numInput;
+			if ((numInput == 1) && (randNum <= 50)) {
+				for (int i = 0; i < 9; i++) {
+					for (int j = 0; j < 9; j++) {
+						nineByNine[i][j] = board1[i][j];
+					}
+				}
+			}
+			else if ((numInput == 1) && (randNum > 50)) {
+				for (int i = 0; i < 9; i++) {
+					for (int j = 0; j < 9; j++) {
+						nineByNine[i][j] = board2[i][j];
+					}
+				}
+			}
+			else if ((numInput == 2) && (randNum <= 50)) {
+				for (int i = 0; i < 9; i++) {
+					for (int j = 0; j < 9; j++) {
+						nineByNine[i][j] = board3[i][j];
+					}
+				}
+			}
+			else if ((numInput == 2) && (randNum > 50)) {
+				for (int i = 0; i < 9; i++) {
+					for (int j = 0; j < 9; j++) {
+						nineByNine[i][j] = board4[i][j];
+					}
+				}
+			}
 		}
-		cout << endl;
-		if (i == 2 || i == 5 || i == 8) {
-			cout << ' ';
-			for (int i = 0; i < 9; i++)	cout << ANSI_COLOR_RED << vertical << spacer;
-			cout << vertical << endl;
+		else if (numInput == 2) {
+			cout << "Would you like an easy board (1), or hard board (2)? ";
+			cin >> numInput;
 		}
-	}
+		
+		do
+		{
+			bd.printBoard(nineByNine);
+			bd.coordinate();
+			if (alg.check(nineByNine) == 2) loop = true;
+			else loop = false;
+			if (loop == false) system("cls");
+		} while (loop);
+		if (alg.check(nineByNine) == 1) cout << "INCORRECT! Would you like to try again? (Y|N): ";
+		else cout << "CORRECT! Would you like to play again? (Y|N): ";
+		do
+		{
+			cin >> input;
+			repChar = tolower(input[0]);
+		} while (repChar != 'y' && repChar != 'n');
+	} while (repChar == 'y');
 }
-
-  /*
-  Code to access the board in specific coordinates
-  and change the number at that specific coordinate
-  Using a 1d array of letters to access the 2d array,
-  for the x-coordinate and a int variable to access 
-  the y-coordinate
-  */
 
 void Board::coordinate() {
 
@@ -91,30 +117,41 @@ void Board::coordinate() {
 	nineByNine[rowCoordinate][columnCoordinate] = input;
 }
 
-void Board::gameplayLoop() {
-	Board bd;
-	Alg alg;
-	string input;
-	char repChar;
-	bool loop = false;
-	do
-	{
-		do
-		{
-			bd.printBoard();
-			bd.coordinate();
-			if (alg.check(nineByNine) == 2) loop = true;
-			else loop = false;
-			if (loop == false) system("cls");
-		} while (loop);
-		if (alg.check(nineByNine) == 1) cout << "INCORRECT! Would you like to try again? (Y|N): ";
-		else cout << "CORRECT! Would you like to play again? (Y|N): ";
-		do
-		{
-			cin >> input;
-			repChar = tolower(input[0]);
-		} while (repChar != 'y' && repChar != 'n');
-	} while (repChar == 'y');
+void Board::printBoard(int a[9][9]) {
+
+	cout << "  ";
+	for (int i = 0; i < 9; i++) cout << ANSI_COLOR_BLACK << i + 1 << ' ';
+
+	cout << "\n ";
+	for (int i = 0; i < 9; i++)	cout << ANSI_COLOR_RED << vertical << spacer;
+	cout << vertical << endl;
+
+	for (int i = 0; i < 9; i++) {
+
+		if (i == 0) letter = 'A';
+		else if (i == 1) letter = 'B';
+		else if (i == 2) letter = 'C';
+		else if (i == 3) letter = 'D';
+		else if (i == 4) letter = 'E';
+		else if (i == 5) letter = 'F';
+		else if (i == 6) letter = 'G';
+		else if (i == 7) letter = 'H';
+		else if (i == 8) letter = 'I';
+
+		cout << ANSI_COLOR_BLACK << letter << ANSI_COLOR_RED << vertical;
+		for (int j = 0; j < 9; j++) {
+			if (a[i][j] == 0) cout << ' ';
+			else cout << ANSI_COLOR_WHITE << a[i][j];
+			if (j != 2 && j != 5 && j != 8) cout << ' ';
+			else cout << ANSI_COLOR_RED << vertical;
+		}
+		cout << endl;
+		if (i == 2 || i == 5 || i == 8) {
+			cout << ' ';
+			for (int i = 0; i < 9; i++)	cout << ANSI_COLOR_RED << vertical << spacer;
+			cout << vertical << endl;
+		}
+	}
 }
 
 int Board::getNumber(int y, int x) {

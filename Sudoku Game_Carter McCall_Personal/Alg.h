@@ -36,4 +36,3 @@ public:
 	int getSquare(int, int);
 	int check(int[9][9]);
 };
-
