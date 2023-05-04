@@ -4,171 +4,69 @@
 #include"Alg.h"
 
 using namespace std;
-
-/*void Alg::basicVectors() {
-    for (int i = 0; i < 9; i++) {
-        for (int j = 1; j < 10; j++) {
-            row[i].push_back(j);
-        }
-    }
-    for (int i = 0; i < 9; i++) {
-        for (int j = 1; j < 10; j++) {
-            column[i].push_back(j);
-        }
-    }
-    for (int i = 0; i < 9; i++) {
-        for (int j = 1; j < 10; j++) {
-            square[i].push_back(j);
-        }
-    }
-}
-
 void Alg::randomBoard() {
-    basicVectors();
     srand(time(0));
-    bool squareTrue = false;
-    bool columnTrue = false;
-    int cube = 0;
-    int columnNum = 0;
-    int squareNum = 0;
-    int whichC = 0;
-    int which = 0;
     int randNum = 0;
-    int size = 0;
-        for (cube = 0; cube < 3; cube++) {
-            for (int j = 0; j < 3;j++) {
-                for (int i = 0; i < which*2; i++) cout << " ";
-                for (int f = 0; f < 3; f++) {
-                    squareTrue = false;
-                    columnTrue = false;
-                    while (!columnTrue || !squareTrue) {
-                        randNum = rand() % row[j+which].size();
-                        for (int i = 0; i < square[cube+which].size();) {
-                            if (square[cube+which][i] == row[j+which][randNum]) {
-                                squareTrue = true;
-                                squareNum = i;
-                                break;
-                            }
-                            i++;
-                            
-                        }
-                        for (int i = 0; i < column[f+which].size();i) {
-                            if (column[f+which][i] == row[j + which][randNum]) {
-                                columnTrue = true;
-                                columnNum = i;
-                                break;
-                            }
-                            i++;
-
-                        }
-                    }
-                    board[j+which][f+which] = row[j+which][randNum];
-                    row[j+which].erase(row[j+which].begin() + randNum);
-                    column[f+which].erase(column[f+which].begin() + columnNum);
-                    square[cube+which].erase(square[cube+which].begin() + squareNum);
-                    cout << " " << board[j+which][f+which];
-                }
-                cout << endl;
-            }
-
-            
-            which += 3;
+    vector<int> baseRow;
+    for (int i = 0; i < 9; i++) {
+        baseRow.push_back(i+1);
+    }
+    for (int i = 0; i < 9; i++) {
+        randNum = rand() % baseRow.size();
+        rows[0].r.push_back(baseRow[randNum]);
+        //cout << rows[0].r[i];
+        baseRow.erase(baseRow.begin() + randNum);
+    }
+    for (int i = 1; i < 3; i++) {
+        shift(i, 3);
+    }
+    shift(3, 1);
+    for (int i = 4; i < 6; i++) {
+        shift(i, 3);
+    }
+    shift(6, 1);
+    for (int i = 7; i < 9; i++) {
+        shift(i, 3);
+    }
+    
+    
+    randNum = 0;
+    for (int i = 0; i < 3; i++) {
+        for (int f = 0; f < 3; f++) {
+            randNum = rand() % 3;
+            rows[(i * 3) + randNum].r.swap(rows[f + (i * 3)].r);
         }
-        which = 0;
-        int rowNum = 0;
-        columnNum = 0;
-        int squ = 0;
-        int value = 0;
-        bool addcolumn =  false, addsquare = false, add = false;
-        for (int i = 0; i < 9; i++) {
-            for (int f = 0; f < 9; f++) {
-                if (board[i][f] != 0) {
-                    continue;
-                }
-                for (int t = 0; t < row[i].size(); t++) {
-                    value = row[i][t];
-                    for (int g = 0; g < column[f].size(); g++) {
-                        if (g == column[f].size() - 1 && column[f][g] != value) {
-                            addsquare = false;
-                            break;
-                        }
-                        if (column[f][g] == value) {
-                            addcolumn = true;
-                            columnNum = g;
-                            break;
-                        }
-                    }
-                    squ = getSquare(i, f);
-                    for (int g = 0; g < square[squ].size(); g++) {
-                        if (g == square[squ].size() - 1 && square[squ][g] != value) {
-                            addsquare = false;
-                            break;
-                        }
-                        if (square[squ][g] == value) {
-                            addsquare = true;
-                            squareNum = g;
-                            break;
-                        }
-                    }
-                    if (addcolumn && addsquare) {
-                        
-                        if (t < row[i].size() && columnNum < column[f].size()&& squareNum < square[squ].size()) {
-                            row[i].erase(row[i].begin() + t);
-                            column[f].erase(column[f].begin() + columnNum);
-                            square[squ].erase(square[squ].begin() + squareNum);
-                        }
-                        else {
-                            continue;
-                        }
-                       
-                        board[i][f] = value;
-                        break;
-                     
-                    }
-                    
-                }
-                
-            }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int f = 0; f < 3; f++) {
+            randNum = rand() % 3;
+            swapCol(randNum + (i * 3), f + (i * 3));
         }
-        
+    }
+    for (int i = 0; i < 9; i++) {
+        for (int f = 0; f < 9; f++) {
+            board[i][f] = rows[i].r[f];
+        }
+    }
+    for (int i = 0; i < 9; i++) {
+        for (int f = 0; f < 9; f++) {
+            cout << board[i][f];
+        }
+        cout << endl;
+    }
+    //int c = check(board);
+    //if (c == 0) {
+    //    cout << "IT WORKS" << endl;
+    //}
 
 
-}*/
+}
 
 int Alg::getNumber(int x, int y) {
     return(board[x][y]);
 }
 
-int Alg::getRow(int square, int num) {
-    int retVal = 0;
-    int modifier = 0;
-    if (0 <= square < 3) {
-        modifier = 0;
-    }
-    else if (3<= square < 6) {
-        modifier = 3;
-    }
-    else if (6 <= square < 9) {
-        modifier = 6;
-    }
 
-    if (0 <= num < 3) {
-        retVal = 0 + modifier;
-    }
-    else if (3 <= num < 6) {
-        retVal = 1 + modifier;
-    }
-    else if (6 <= num < 9) {
-        retVal = 2 + modifier;
-    }
-    return retVal;
-}
-int Alg::getColumn(int square, int num) {
-    int retVal = 0;
-    int modifier = 0;
-    
-    return retVal;
-}
 
 int Alg::getSquare(int row, int column) {
     int retVal = 0;
@@ -237,6 +135,33 @@ int Alg::check(int board[9][9]) {
     return retVal;
 }
 
+void Alg::shift(int ro, int move) {
+    int temp = 0;
+    for (int i = 0; i < 9; i++) {
+        rows[ro].r.push_back(rows[ro - 1].r[i]);
+    }
+    for (int i = 0; i < move; i++) {
+        temp = rows[ro].r[rows[ro].r.size()-1];
+        rows[ro].r.insert(rows[ro].r.begin(), temp);
+        rows[ro].r.pop_back();
+    }
+    /*for (int i = 0; i < rows[ro].r.size(); i++) {
+        cout << rows[ro].r[i];
+    }*/
+}
+
+void Alg::swapCol(int col, int newcol) {
+    int value = 0;
+    for (int i = 0; i < 9;i++) {
+        value = rows[i].r[col];
+        rows[i].r.erase(rows[i].r.begin() + col);
+        rows[i].r.insert(rows[i].r.begin() + newcol, value);
+    }
+}
+//storing outdated code for use if needed
+///////////////////////////
+// DELETE BEFORE TURN IN //
+///////////////////////////
 /*for (int i = 0; i < 9;i++) {
     for (int j = 0; j < 9;j++) {
         size = row[i].size();
@@ -352,4 +277,34 @@ for (int i = 0; i < 3; i++) {
         whichC += 3;
     }
     which += 3;
+}*/
+/*int Alg::getRow(int square, int num) {
+    int retVal = 0;
+    int modifier = 0;
+    if (0 <= square < 3) {
+        modifier = 0;
+    }
+    else if (3<= square < 6) {
+        modifier = 3;
+    }
+    else if (6 <= square < 9) {
+        modifier = 6;
+    }
+
+    if (0 <= num < 3) {
+        retVal = 0 + modifier;
+    }
+    else if (3 <= num < 6) {
+        retVal = 1 + modifier;
+    }
+    else if (6 <= num < 9) {
+        retVal = 2 + modifier;
+    }
+    return retVal;
+}
+int Alg::getColumn(int square, int num) {
+    int retVal = 0;
+    int modifier = 0;
+
+    return retVal;
 }*/
