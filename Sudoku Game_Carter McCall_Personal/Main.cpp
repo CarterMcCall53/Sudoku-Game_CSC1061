@@ -8,9 +8,8 @@
 #include "Board.h"
 #include "Colors.h"
 
-int main() {
+int main() { //this is really small, damn...
 	Board bd;
-	int input;
 	cout << ANSI_COLOR_WHITE << "Welcome to sudoku! You will be playing on a 9x9 board, Good Luck!\n\n\n";
 	bd.gameplayLoop();
 }
