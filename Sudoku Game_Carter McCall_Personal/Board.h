@@ -5,14 +5,14 @@
 *  Purpose:
 *		Hold the board class
 *  Progress:
-*		Modified: March 20, 2023
+*		Modified: April 20, 2023
 *			Added variables and 2d array in the private
 *			and updated the public to house the printBoard
 *			function
-*		Modifed: March 24, 2023 
+*		Modifed: April 24, 2023 
 *			Updated and added the tempCoordinate function
 *			to store the method
-*		Modified: March 25, 2023
+*		Modified: April 25, 2023
 *			Reformated and reorganized to clean up clutter
 */
 

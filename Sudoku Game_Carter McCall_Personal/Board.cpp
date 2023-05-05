@@ -4,11 +4,11 @@
 *  Purpose:
 *		Hold the printBoard() and game() functions
 *  Progress:
-*		Modified: March 20, 2023
+*		Modified: April 20, 2023
 *			 Updated the board to add a grid and 2d array to print
-*		Modified: March 24, 2023 
+*		Modified: April 24, 2023 
 *			 Added the coordinate system, using a 1d array
-*	    Modified: March 25, 2023
+*	    Modified: April 25, 2023
 *			Added more organization and reformated the .cpp file
 *		
 */
