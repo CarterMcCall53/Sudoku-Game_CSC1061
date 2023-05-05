@@ -1,4 +1,9 @@
-/**/
+/*Alg.h
+*Isaiah Hocking
+*21 April 2023
+*Purpose:
+*		Defining a class to store the board values and variables for the algroythms
+*/
 
 #include <iostream>
 #include <iomanip>

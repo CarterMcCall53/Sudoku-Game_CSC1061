@@ -1,5 +1,10 @@
-/*
-*/
+/*Alg.cpp
+ *Isaiah Hocking
+ *21 April 2023
+ *Purpose:
+ *      Defining the functions to check to see of a board is correct and also creatig randomized puzzles
+ */
+
 
 #include"Alg.h"
 
@@ -17,7 +22,7 @@ void Alg::randomBoard(int diffuculty) {
         baseRow.push_back(i+1);
     }
     for (int i = 0; i < 9; i++) {
-        //
+        //only the first row is randomized
         randNum = rand() % baseRow.size();
         rows[0].r.push_back(baseRow[randNum]);
         //cout << rows[0].r[i];
